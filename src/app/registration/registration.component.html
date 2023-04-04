@@ -1,1 +1,13 @@
-<p>registration works!</p>
+<div id="panel">
+    <form (ngSubmit)="onSubmit()">
+    <label for="username">Nazwa użytkownika:</label>
+    <input [(ngModel)]="registered.login" type="text" id="username" name="username">
+    <label for="password">Hasło:</label>
+    <input [(ngModel)]="registered.password" type="password" id="password" name="password">
+    <label for="password">Adres email:</label>
+    <input [(ngModel)]="registered.address" type="text" id="username" name="adres">
+    <div id="lower">
+    <button mat-raised-button color="primary">Rejestracja</button>
+</div>
+    </form>
+</div>
