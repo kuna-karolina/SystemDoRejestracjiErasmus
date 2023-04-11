@@ -16,9 +16,8 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  rejestruj(registered: Registered) //: Observable<boolean>
-   {
-
+  registration(registered: Registered) //: Observable<boolean>
+  {
     //return this.http.post<>("", rejestracja);
   }
 }

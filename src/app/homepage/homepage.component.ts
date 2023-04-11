@@ -12,7 +12,6 @@ export class HomepageComponent {
 
   login()
   {
-    console.log("hey")
     this.router.navigateByUrl('login');
   }
 

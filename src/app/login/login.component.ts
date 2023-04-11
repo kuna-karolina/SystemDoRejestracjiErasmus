@@ -9,10 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   
-  constructor(private loginService: LoginService,private router: Router)
-  {
-    console.log("hey2")
-  }
+  constructor(private loginService: LoginService,private router: Router){}
 
   login: Login = 
   {
@@ -21,20 +18,10 @@ export class LoginComponent {
     role: null
   }
 
-  blad: string | undefined;
 
   onSubmit() 
   {
-    console.log("this.login");
-    console.log(this.login);
-    /*this.loginService.login(this.login).subscribe(res => {
-      if(res)
-      {
-        this.router.navigateByUrl('');
-      } else 
-      {
-        this.blad = "Błędny login lub hasło!";
-      }
-    });*/
+  
+  
   }
 }

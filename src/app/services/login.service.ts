@@ -27,7 +27,6 @@ export class LoginService {
 
   login(login: Login)//: Observable<boolean> 
   {
-    console.log("cos");
     //return this.http.post<LoginRes>("", login).pipe();
   }
 }

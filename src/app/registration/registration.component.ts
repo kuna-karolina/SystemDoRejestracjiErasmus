@@ -24,7 +24,7 @@ export class RegistrationComponent {
   {
     console.log(this.registered);
     this.registered.role = "student";
-    this.registrationService.rejestruj(this.registered);//.subscribe();
+    this.registrationService.registration(this.registered);
     this.router.navigateByUrl('');
   }
 }
