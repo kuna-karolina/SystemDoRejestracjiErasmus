@@ -25,6 +25,6 @@ export class RegistrationComponent {
     console.log(this.registered);
     this.registered.role = "student";
     this.registrationService.registration(this.registered);
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('menu');
   }
 }
