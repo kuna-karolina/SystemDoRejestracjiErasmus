@@ -1,0 +1,17 @@
+##
+### Developer configuration
+##
+spring:
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: test_db_token_refresh
+
+jwt:
+  token:
+    secretKey: someSecretKey
+    expirationSec: 300            # 5 min
+    refreshExpirationSec: 900     # 15min
+    header: Authorization
+    prefix: Bearer
