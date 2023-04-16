@@ -1,32 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 
-export interface Login 
-{
+export interface Registered {
   login: string | null;
   password: string | null;
+  address: string | null;
   role: string | null;
-}
-
-export interface LoginRes 
-{
-  token: string;
-  role: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class LoginService {
+export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-
-  login(login: Login)//: Observable<boolean> 
+  registration(registered: Registered) //: Observable<boolean>
   {
-    //return this.http.post<LoginRes>("", login).pipe();
+    //return this.http.post<>("", rejestracja);
   }
 }

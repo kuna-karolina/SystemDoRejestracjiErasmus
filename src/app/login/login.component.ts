@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Login, LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,18 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
   
-  constructor()
+  constructor(private loginService: LoginService,private router: Router){}
+
+  login: Login = 
   {
-    console.log("hey2")
+    login: null,
+    password: null,
+    role: null
+  }
+
+
+  onSubmit() 
+  {
+      this.router.navigateByUrl("menu");
   }
 }
