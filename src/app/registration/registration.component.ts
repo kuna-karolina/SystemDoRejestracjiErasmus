@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Registered, RegistrationService } from '../services/registration.service';
+import { RegistrationService } from '../services/registration.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -9,22 +10,27 @@ import { Registered, RegistrationService } from '../services/registration.servic
 })
 export class RegistrationComponent {
 
-  constructor(private router: Router,
-    private registrationService: RegistrationService)
-     { }
+  constructor(
+    private router: Router,
+    private registrationService: RegistrationService
+  ) { }
 
-     registered: Registered = {
-      login: null,
-      password: null,
-      address: null,
-      role: null
-    }
-    
-  onSubmit() 
-  {
-    console.log(this.registered);
-    this.registered.role = "student";
-    this.registrationService.registration(this.registered);
+  registrationForm!: FormGroup;
+
+  ngOnInit() {
+    this.registrationForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required)
+    }, { updateOn: 'blur' });
+  }
+
+  onSubmit() {
+    console.log(this.registrationForm.value);
+    this.registrationService.register(this.registrationForm.value);
     this.router.navigateByUrl('menu');
   }
 }

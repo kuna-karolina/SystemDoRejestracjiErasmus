@@ -1,11 +1,26 @@
 <div id="panel">
-    <form (ngSubmit)="onSubmit()">
-    <label for="username">Nazwa użytkownika:</label>
-    <input [(ngModel)]="login.login" type="text" id="username" name="username">
-    <label for="password">Hasło:</label>
-    <input [(ngModel)]="login.password" type="password" id="password" name="password">
-    <div id="lower">
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        id="username"
+        type="text"
+        class="form-control"
+        formControlName="username"
+      />
     </div>
-    </form>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        formControlName="password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
 </div>
+
+<!-- do ogarniecia, ez [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) <input _ngcontent-opc-c13 id=​"password" type=​"password" formcontrolname=​"password" class=​"form-control ng-touched ng-dirty ng-valid" ng-reflect-name=​"password">​ -->

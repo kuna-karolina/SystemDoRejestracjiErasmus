@@ -2,12 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
-export interface Registered {
-  login: string | null;
-  password: string | null;
-  address: string | null;
-  role: string | null;
+export interface Registration {
+  email: string,
+  username: string,
+  password: string,
+  name: string,
+  surname: string,
+  role: string
 }
+
+// pozniej opcjonalne uzupelnienie dodatkowych danych
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,7 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  registration(registered: Registered) //: Observable<boolean>
+  register(userData: Registration) //: Observable<boolean>
   {
     //return this.http.post<>("", rejestracja);
   }

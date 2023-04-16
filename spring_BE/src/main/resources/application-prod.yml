@@ -1,0 +1,20 @@
+##
+### Configuration for production
+##
+spring:
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: test_db
+      username: #<Username>
+      password: # <Password>
+      authentication-database: # <Authentication>
+
+jwt:
+  token:
+    secretKey: someSecretKey
+    expirationSec: 300            # 5 min
+    refreshExpirationSec: 900     # 15min
+    header: Authorization
+    prefix: Bearer

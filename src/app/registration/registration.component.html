@@ -1,13 +1,84 @@
-<div id="panel">
-    <form (ngSubmit)="onSubmit()">
-    <label for="username">Nazwa użytkownika:</label>
-    <input [(ngModel)]="registered.login" type="text" id="username" name="username">
-    <label for="password">Hasło:</label>
-    <input [(ngModel)]="registered.password" type="password" id="password" name="password">
-    <label for="password">Adres email:</label>
-    <input [(ngModel)]="registered.address" type="text" id="username" name="adres">
-    <div id="lower">
-    <button mat-raised-button color="primary">Rejestracja</button>
+<div class="panel">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Second name:</label>
+      <input
+        id="surname"
+        type="text"
+        class="form-control"
+        formControlName="surname"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        id="username"
+        type="text"
+        class="form-control"
+        formControlName="username"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        formControlName="password"
+      />
+    </div>
+
+    <div class="form-group">
+      <div id="radio">
+        <label class="radio-inline">
+          <input
+            id="role1"
+            type="radio"
+            class="form-check-input"
+            formControlName="role"
+            value="Admin"
+            required
+          />
+          Admin
+        </label>
+        <label class="radio-inline">
+          <input
+            id="role2"
+            type="radio"
+            class="form-check-input"
+            formControlName="role"
+            value="User"
+            required
+          />
+          User
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
 </div>
-    </form>
-</div>
+
+
+<!-- do ogarniecia, ez [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) <input _ngcontent-opc-c13 id=​"password" type=​"password" formcontrolname=​"password" class=​"form-control ng-touched ng-dirty ng-valid" ng-reflect-name=​"password">​ -->

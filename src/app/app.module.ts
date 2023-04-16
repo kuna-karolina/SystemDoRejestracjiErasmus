@@ -8,9 +8,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
+import { NavigationComponent } from './navigation/navigation.component';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { MenuComponent } from './menu/menu.component';
     PagenotfoundComponent,
     HomepageComponent,
     MenuComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatButtonModule
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Login, LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +12,18 @@ export class LoginComponent {
   
   constructor(private loginService: LoginService,private router: Router){}
 
-  login: Login = 
-  {
-    login: null,
-    password: null,
-    role: null
+  loginForm!: FormGroup;
+
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    }, { updateOn: 'blur' });
   }
 
-
-  onSubmit() 
-  {
-      this.router.navigateByUrl("menu");
+  onSubmit() {
+    console.log(this.loginForm.value);
+    this.loginService.login(this.loginForm.value);
+    this.router.navigateByUrl('menu');
   }
 }
