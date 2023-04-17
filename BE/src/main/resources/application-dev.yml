@@ -4,9 +4,9 @@
 spring:
   data:
     mongodb:
-      port: 27017
+      port: 27018
       host: localhost
-      database: test_db_token_refresh
+      database: test
 
 jwt:
   token:
