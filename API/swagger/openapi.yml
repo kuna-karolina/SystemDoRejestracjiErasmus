@@ -20,9 +20,13 @@ servers:
 tags:
   - name: UserContextSecurity
     description: Everything about security in the user context
+  - name: Admin
+    description: Everything what admin can do
+  - name: User
+    description: Everything what user can do
 
 paths:
-  /user/sign-up:
+  /api/auth/register:
     post:
       tags:
         - UserContextSecurity
@@ -38,18 +42,18 @@ paths:
         required: true
       responses:
         '200':
-          description: User account created successfully.
+          description: User registered successfully!
         '400':
           description: Bad Request - Invalid input data.
         '500':
           description: Internal server error - Unable to create user account.
 
-  /user/login:
+  /api/auth/authenticate:
     post:
       tags:
         - UserContextSecurity
       summary: Log in to the system
-      description: Authenticate user credentials and generate access token
+      description: Authenticate user credentials and return user information with jwt
       operationId: authenticateUser
       requestBody:
         description: User credentials for authentication
@@ -58,18 +62,7 @@ paths:
           application/json:
             schema:
               type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  description: User's email address
-                password:
-                  type: string
-                  format: password
-                  description: User's password for the account
-              required:
-                - email
-                - password
+              $ref: '#/components/schemas/SignInForms'
       responses:
         '200':
           description: Authentication successful, returns access token.
@@ -77,14 +70,107 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  accessToken:
-                    type: string
-                    description: Access token for authenticated user.
+                $ref: '#components/schemas/AuthTokenResponseModel'
         '401':
           description: Unauthorized - Invalid user credentials.
         '500':
           description: Internal server error - Unable to authenticate user.
+
+  /api/auth/refreshToken:
+    post:
+      tags:
+        - UserContextSecurity
+      summary: Refresh the main token
+      operationId: refreshingToken
+      requestBody:
+        description: RefreshToken to refresh main jwt
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/RefreshTokenRequestModel'
+      responses:
+        '200':
+          description: Successful token refresh
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/RefreshTokenResponseModel'
+        '400':
+          description: Bad Request - Invalid input data.
+        '403':
+          description: Session has expired.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  timestamp:
+                    type: string
+                  message:
+                    type: string
+                  description:
+                    type: string
+        '500':
+          description: Internal server error.
+
+  /api/signout:
+    post:
+      tags:
+        - UserContextSecurity
+      summary: User sign out
+      operationId: sign-outUser
+      description: Logout user (JWT required)
+
+      responses:
+        '200':
+          description: User signed out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path:
+                    type: string
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  status:
+                    type: integer
+
+  /api/test/user/:
+    get:
+      tags:
+        - User
+      summary: Test user role
+      responses:
+        '200':
+          description: Test complete successfully
+        '403':
+          description: Forbidden
+
+  /api/test/admin/:
+    get:
+      tags:
+        - Admin
+      summary: Test admin role
+      responses:
+        '200':
+          description: Test complete successfully
+        '403':
+          description: Forbidden
 
 
 components:
@@ -92,22 +178,100 @@ components:
     SignUpForm:
       type: object
       properties:
-        name:
+        first_name:
           type: string
           description: User's first name
-        surname:
+        last_name:
           type: string
           description: User's last name
         email:
           type: string
           format: email
           description: User's email address
+        username:
+          type: string
+          description: User's username for the account
         password:
           type: string
           format: password
           description: User's password for the account
+        roles:
+          description: List of user's roles
+          type: array
+          items:
+            type: string
+
+
       required:
-        - name
-        - surname
+        - first_name
+        - last_name
         - email
         - password
+        - username
+        - roles
+
+    SignInForms:
+      type: object
+      properties:
+        username:
+          type: string
+          description: User's username for the account
+        password:
+          type: string
+          description: User's password for the account
+      required:
+        - username
+        - password
+
+    RefreshTokenRequestModel:
+      type: object
+      properties:
+        refreshToken:
+          type: string
+      required:
+        - refreshToken
+
+    RefreshTokenResponseModel:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: Json Web Token to be attached to each request
+        refreshToken:
+          type: string
+          description: Token used to refresh the main token
+        tokenType:
+          type: string
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+
+    AuthTokenResponseModel:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Json Web Token to be attached to each request
+        refreshToken:
+          type: string
+          description: Token used to refresh the main token
+        first_name:
+          type: string
+          description: User's first name
+        last_name:
+          type: string
+          description: User's last name
+        email:
+          type: string
+          description: User's email address
+        username:
+          type: string
+          description: User's username for the account
+        roles:
+          type: array
+          items:
+            type: string
+          description: List of user's roles
