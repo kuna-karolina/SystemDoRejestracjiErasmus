@@ -24,6 +24,11 @@ export class LoginComponent {
   onSubmit() {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value);
-    this.router.navigateByUrl('menu');
+    this.router.navigateByUrl('dashboard');
   }
+
+  goToLoginPage() {
+    this.router.navigate(['/homepage/registration']);
+  }
+  
 }

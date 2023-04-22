@@ -31,6 +31,10 @@ export class RegistrationComponent {
   onSubmit() {
     console.log(this.registrationForm.value);
     this.registrationService.register(this.registrationForm.value);
-    this.router.navigateByUrl('menu');
+    this.router.navigateByUrl('dashboard');
+  }
+
+  goToLoginPage() {
+    this.router.navigate(['/homepage/login']);
   }
 }

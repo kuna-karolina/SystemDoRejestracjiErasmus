@@ -1,6 +1,13 @@
-<a routerLink="/registration">REGISTER</a>
-<a routerLink="/login">LOGIN</a>
-<a routerLink="/menu">MENU</a>
-
-
-
+<div class="nav-container">
+    <img src="/assets/logo.png" alt="logo" />
+  
+    <div class="nav-items" *ngFor="let item of navigation | keyvalue">
+      <a
+        [ngClass]="router.url == item.value.path ? 'active' : ''"
+        [routerLink]="item.value.path"
+        >{{ item.value.name }}</a
+      >
+    </div>
+    <a routerLink="/homepage"> <span class="material-symbols-outlined"> logout </span></a>
+  </div>
+  

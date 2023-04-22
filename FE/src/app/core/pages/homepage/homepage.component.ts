@@ -12,11 +12,11 @@ export class HomepageComponent {
 
   login()
   {
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('homepage/login');
   }
 
   registration()
   {
-    this.router.navigateByUrl('registration');
+    this.router.navigateByUrl('homepage/registration');
   }
 }

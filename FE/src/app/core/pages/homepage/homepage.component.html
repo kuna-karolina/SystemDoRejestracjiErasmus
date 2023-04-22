@@ -1,8 +1,11 @@
-<table>
-    <tr>
-        <button mat-raised-button color="primary" (click)="login()">Zaloguj się!</button>
-    </tr>
-    <tr>
-      <button mat-raised-button color="primary" (click)="registration()">Zarejestruj się!</button>
-  </tr>
-</table>
+<div class="homepage-container">
+  <div class="white-box">
+    <div class="head-box">
+      <img src="/assets/logo.png" alt="logo" />
+    </div>
+
+    <div class="body-box">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
