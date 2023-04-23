@@ -10,33 +10,6 @@ export interface Navigation {
   [id: string]: NavType
 }
 
-export const NAVIGATION: Navigation = {
-  registration: {
-    name: "Rejestracja na wyjazd",
-    path: "/dashboard/sign-me-up"
-  },
-  aboutMe: {
-    name: "Moje dane",
-    path: "/dashboard/about-me"
-  },
-  // func3: {
-  //   name: "Funkcjonalność 3",
-  //   path: "/dashboard/sign-me-up"
-  // },
-  // func4: {
-  //   name: "Funckjonalność 4",
-  //   path: "/dashboard/about-me"
-  // },
-  login: {
-    name: "logowanie (podgląd)",
-    path: "/homepage/login"
-  },
-  dashboard: {
-    name: "rejestracja (podgląd)",
-    path: "/homepage/registration"
-  },
-}
-
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -44,7 +17,34 @@ export const NAVIGATION: Navigation = {
 })
 
 export class NavigationComponent {
-  navigation: Navigation = NAVIGATION;
+
+  NAVIGATION: Navigation = {
+    registration: {
+      name: "Rejestracja na wyjazd",
+      path: "/dashboard/sign-me-up"
+    },
+    aboutMe: {
+      name: "Moje dane",
+      path: "/dashboard/about-me"
+    },
+    // func3: {
+    //   name: "Funkcjonalność 3",
+    //   path: "/dashboard/sign-me-up"
+    // },
+    // func4: {
+    //   name: "Funckjonalność 4",
+    //   path: "/dashboard/about-me"
+    // },
+    login: {
+      name: "logowanie (podgląd)",
+      path: "/homepage/login"
+    },
+    dashboard: {
+      name: "rejestracja (podgląd)",
+      path: "/homepage/registration"
+    },
+  }
+  public navigation = Object.keys(this.NAVIGATION);
 
   constructor(public router: Router) {
 
