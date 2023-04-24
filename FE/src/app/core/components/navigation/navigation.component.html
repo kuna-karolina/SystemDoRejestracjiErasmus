@@ -1,0 +1,12 @@
+<div class="nav-container">
+  <img src="/assets/logo.png" alt="logo" />
+
+  <div class="nav-items" *ngFor="let key of navigation">
+    <a
+      [ngClass]="router.url == NAVIGATION[key].path ? 'active' : ''"
+      [routerLink]="NAVIGATION[key].path"
+      >{{ NAVIGATION[key].name }}</a
+    >
+  </div>
+  <a routerLink="#"> <span class="material-symbols-outlined"> logout </span></a>
+</div>

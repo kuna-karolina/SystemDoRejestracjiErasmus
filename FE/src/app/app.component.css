@@ -1,20 +1,14 @@
-.navigation {
-  height: 10%;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: var(--blue-primary);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+button {
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue);
 }
 
-.main-container {
-  height: 90%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+button:hover {
+  background-color: var(--usual-blue);
+  border: 1px solid var(--usual-blue);
+}
 
+button:active {
+  background-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
 }

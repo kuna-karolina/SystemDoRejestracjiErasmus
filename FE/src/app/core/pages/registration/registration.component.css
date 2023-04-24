@@ -1,0 +1,28 @@
+.panel {
+  width: 400px;
+  font: 14px;
+  text-align: center;
+}
+
+label {
+  margin: 10px 0px 3px 0px;
+  font-size: 14px;
+  color: black;
+  text-shadow: 0 0 1px silver;
+}
+
+.radio-inline {
+  margin: 15px 15px 0px 15px;
+}
+
+.text-option {
+  text-decoration: none;
+  color: var(--light-blue);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+.btn-primary {
+  margin: 25px 0;
+}
